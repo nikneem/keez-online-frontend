@@ -1,0 +1,44 @@
+.home-page-container {
+    .background-container {
+        background-image: url('/assets/images/background/home-background-01.jpg');
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        .home-container {
+            width: 90%;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .home-page-container {
+        .background-container {
+            .home-container {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .home-page-container {
+        .background-container {
+            .home-container {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .home-page-container {
+        .background-container {
+            .home-container {
+                width: 40%;
+            }
+        }
+    }
+}

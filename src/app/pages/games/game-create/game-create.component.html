@@ -1,0 +1,77 @@
+<div class="empty-state" *ngIf="!friendships || friendships.length < 3">
+    <div class="empty-state-panel">
+        <mat-card>
+            <h1>
+                {{ 'GamesPage.Friendships.EmptyStateTitle' | translate }}
+            </h1>
+            <p>
+                {{ 'GamesPage.Friendships.EmptyStateText' | translate }}
+            </p>
+        </mat-card>
+    </div>
+</div>
+<mat-card *ngIf="newGameForm">
+    <mat-card-title>{{ 'GamesPage.Create.Title' | translate }}</mat-card-title>
+    <mat-card-content>
+        <p>{{ 'GamesPage.Create.Text' | translate }}</p>
+
+        <form [formGroup]="newGameForm">
+            <mat-form-field class="full-width">
+                <mat-label>
+                    {{ 'GamesPage.Create.GameName' | translate }}
+                </mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>
+                    {{ 'GamesPage.Create.PlayerTwo' | translate }}
+                </mat-label>
+                <mat-select formControlName="playerTwo">
+                    <mat-option
+                        [value]="friend.friendId"
+                        *ngFor="let friend of playerTwoFriendships"
+                        >{{ friend.name }}</mat-option
+                    >
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>
+                    {{ 'GamesPage.Create.PlayerThree' | translate }}
+                </mat-label>
+                <mat-select formControlName="playerThree">
+                    <mat-option
+                        [value]="friend.friendId"
+                        *ngFor="let friend of playerThreeFriendships"
+                        >{{ friend.name }}</mat-option
+                    >
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>
+                    {{ 'GamesPage.Create.PlayerFour' | translate }}
+                </mat-label>
+                <mat-select formControlName="playerFour">
+                    <mat-option
+                        [value]="friend.friendId"
+                        *ngFor="let friend of playerFourFriendships"
+                        >{{ friend.name }}</mat-option
+                    >
+                </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle formControlName="randomizeTeams">
+                {{ 'GamesPage.Create.RandomizePlayers' | translate }}
+            </mat-slide-toggle>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-flat-button
+            color="primary"
+            [disabled]="!newGameForm.valid || newGameForm.pristine"
+            (click)="createNewGame()"
+        >
+            {{ 'BUTTON.CreateGame' | translate }}
+        </button>
+    </mat-card-actions>
+</mat-card>

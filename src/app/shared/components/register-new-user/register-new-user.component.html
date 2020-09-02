@@ -1,0 +1,52 @@
+<h2 mat-dialog-title *ngIf="userProfile">
+    {{ 'NEW-USER.Title' | translate: { name: userProfile.name } }}
+</h2>
+<mat-dialog-content>
+    <p>{{ 'NEW-USER.ProfileIntro' | translate }}</p>
+    <div class="profile-view">
+        <div class="information">
+            <form [formGroup]="profileForm">
+                <input type="hidden" formControlName="id" />
+                <input type="hidden" formControlName="subject" />
+                <input type="hidden" formControlName="picture" />
+                <mat-form-field class="full-width">
+                    <mat-label>{{
+                        'NEW-USER.FriendshipId' | translate
+                    }}</mat-label>
+                    <input
+                        matInput
+                        formControlName="friendshipId"
+                        readonly="readonly"
+                    />
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>{{ 'NEW-USER.Name' | translate }}</mat-label>
+                    <input matInput formControlName="name" />
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>{{ 'NEW-USER.Email' | translate }}</mat-label>
+                    <input matInput formControlName="emailAddress" />
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="picture">
+            <img
+                [src]="userProfile.picture"
+                *ngIf="userProfile && userProfile.picture"
+            />
+        </div>
+    </div>
+    <keez-error-message [message]="errorMessage"></keez-error-message>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="profileForm">
+    <keez-loading [loading]="isLoading"></keez-loading>
+    <button
+        mat-button
+        [disabled]="!profileForm.valid"
+        (click)="updateUserProfile()"
+        *ngIf="!isLoading"
+    >
+        {{ 'BUTTON.OK' | translate }}
+    </button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+</mat-dialog-actions>

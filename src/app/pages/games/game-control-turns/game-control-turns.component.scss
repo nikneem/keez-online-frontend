@@ -1,0 +1,16 @@
+@import '../../../../scss/variables.scss';
+
+.game-turns-container {
+    .status-not-your-turn {
+        color: $theme-color;
+    }
+    .status-error {
+        color: $error;
+    }
+    .move-controls {
+        text-align: right;
+        button {
+            margin-left: 1rem;
+        }
+    }
+}

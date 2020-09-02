@@ -1,0 +1,29 @@
+<h1 mat-dialog-title *ngIf="data.requestWalkOrBringIntoPlay">
+    {{ 'GamesPage.Turns.RequestWalkOrBringIntoPlayTitle' | translate }}
+</h1>
+<div mat-dialog-content *ngIf="data.requestWalkOrBringIntoPlay">
+    <p>{{ 'GamesPage.Turns.RequestWalkOrBringIntoPlayText' | translate }}</p>
+</div>
+<div mat-dialog-actions *ngIf="data.requestWalkOrBringIntoPlay">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        {{ 'BUTTON.BringIntoPlay' | translate }}
+    </button>
+    <button mat-button [mat-dialog-close]="false">
+        {{ 'BUTTON.AdvancePawn' | translate }}
+    </button>
+</div>
+<h1 mat-dialog-title *ngIf="data.requestAmountOfSteps">
+    {{ 'GamesPage.Turns.RequestNumberOfPawnStepsTitle' | translate }}
+</h1>
+<div mat-dialog-content *ngIf="data.requestAmountOfSteps">
+    <p>{{ 'GamesPage.Turns.RequestNumberOfPawnStepsText' | translate }}</p>
+</div>
+<div mat-dialog-actions *ngIf="data.requestAmountOfSteps">
+    <button mat-button [mat-dialog-close]="1" cdkFocusInitial>1</button>
+    <button mat-button [mat-dialog-close]="2">2</button>
+    <button mat-button [mat-dialog-close]="3">3</button>
+    <button mat-button [mat-dialog-close]="4">4</button>
+    <button mat-button [mat-dialog-close]="5">5</button>
+    <button mat-button [mat-dialog-close]="6">6</button>
+    <button mat-button [mat-dialog-close]="7">7</button>
+</div>

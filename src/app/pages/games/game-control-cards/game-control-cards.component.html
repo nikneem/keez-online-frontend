@@ -1,0 +1,26 @@
+<mat-card *ngIf="game && game.isStarted">
+    <keez-component-loading [loading]="loading"></keez-component-loading>
+    <div
+        [class]="
+            game && userProfile && game.playerId === game.playerHasTurn
+                ? 'cards has-turn'
+                : 'cards not-has-turn'
+        "
+        *ngIf="cards"
+    >
+        <div
+            [class]="selectedCardId == card.id ? 'card selected' : 'card'"
+            [id]="card.id"
+            *ngFor="let card of cards"
+            (click)="selectCard(card)"
+        >
+            <img
+                [src]="getCardImageUrl(card)"
+                title="{{
+                    'GamesPage.Cards.ValueDescription' + card.valueInt
+                        | translate
+                }}"
+            />
+        </div>
+    </div>
+</mat-card>

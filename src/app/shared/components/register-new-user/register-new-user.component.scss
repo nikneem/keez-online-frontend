@@ -1,0 +1,15 @@
+.profile-view {
+    display: flex;
+    flex-flow: row;
+    .information {
+        flex: 3 3 75%;
+    }
+    .picture {
+        flex: 1 1 25%;
+        text-align: right;
+        img {
+            width: 128px;
+            height: 128px;
+        }
+    }
+}

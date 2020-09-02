@@ -1,0 +1,11 @@
+.home-page-container {
+    .background-container {
+        background-image: url('/assets/images/background/home-background-01.jpg');
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

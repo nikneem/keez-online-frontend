@@ -1,0 +1,30 @@
+<mat-card class="game-turns-container" *ngIf="game && game.isStarted">
+    <div
+        class="status-not-your-turn"
+        *ngIf="game && game.playerId !== game.playerHasTurn"
+    >
+        It's not your turn, wait for others to make a move
+    </div>
+    <div class="status-error" *ngIf="errorMessage">
+        {{ errorMessage | translate }}
+    </div>
+    <div class="status-text">
+        <p>{{ actionDescription | translate }}</p>
+    </div>
+    <div class="move-controls">
+        <button mat-flat-button color="accent" (click)="reset()">
+            {{ 'BUTTONS.Reset' | translate }}
+        </button>
+        <button mat-flat-button color="accent" (click)="pass()">
+            {{ 'BUTTONS.Pass' | translate }}
+        </button>
+        <button
+            mat-flat-button
+            color="primary"
+            [disabled]="moveIsReadyToSend ? null : 'disabled'"
+            (click)="makeMove()"
+        >
+            {{ 'BUTTONS.Go' | translate }}
+        </button>
+    </div>
+</mat-card>

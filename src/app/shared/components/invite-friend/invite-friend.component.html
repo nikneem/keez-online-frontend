@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>
+    {{ 'INVITE-FRIEND.Title' | translate }}
+</h2>
+<mat-dialog-content>
+    <p>{{ 'INVITE-FRIEND.Text' | translate }}</p>
+    <div class="invite-friend-view">
+        <form [formGroup]="friendshipForm">
+            <mat-form-field class="full-width">
+                <mat-label>{{
+                    'INVITE-FRIEND.FriendshipId' | translate
+                }}</mat-label>
+                <input matInput formControlName="friendshipId" />
+            </mat-form-field>
+        </form>
+    </div>
+    <keez-error-message [message]="errorMessage"></keez-error-message>
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="friendshipForm">
+    <keez-loading [loading]="isLoading"></keez-loading>
+    <button mat-flat-button (click)="cancel()" *ngIf="!isLoading">
+        {{ 'BUTTON.Cancel' | translate }}
+    </button>
+    <button
+        mat-flat-button
+        [disabled]="!friendshipForm.valid"
+        (click)="inviteFriend()"
+        *ngIf="!isLoading"
+        color="primary"
+    >
+        {{ 'BUTTON.OK' | translate }}
+    </button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+</mat-dialog-actions>

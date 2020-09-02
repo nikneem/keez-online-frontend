@@ -1,0 +1,46 @@
+<mat-card class="players-container">
+    <h1>Players</h1>
+    <keez-component-loading [loading]="loading"></keez-component-loading>
+
+    <div class="players-card" *ngIf="gamePlayers">
+        <div
+            class="player"
+            [id]="player.id"
+            *ngFor="let player of gamePlayers.players"
+        >
+            <img
+                [src]="player.picture"
+                [title]="player.name"
+                [style.backgroundColor]="player.color"
+                [style.borderColor]="player.color"
+            />
+            <div *ngIf="gamePlayers.gameIsStarted">
+                <span class="player-is-ready" *ngIf="player.hasTurn">
+                    {{ 'GamesPage.Players.HasTurn' | translate }}
+                </span>
+                <span class="player-not-ready" *ngIf="!player.hasTurn">
+                    {{ 'GamesPage.Players.NotHasTurn' | translate }}
+                </span>
+            </div>
+            <div *ngIf="!gamePlayers.gameIsStarted">
+                <span class="player-is-ready" *ngIf="player.isReady">
+                    {{ 'GamesPage.Players.Ready' | translate }}
+                </span>
+                <button
+                    mat-flat-button
+                    color="primary"
+                    *ngIf="!player.isReady && player.userId === userProfile.id"
+                    (click)="setPlayerReady(player)"
+                >
+                    {{ 'GamesPage.Players.SetReady' | translate }}
+                </button>
+                <span
+                    class="player-not-ready"
+                    *ngIf="!player.isReady && player.userId !== userProfile.id"
+                >
+                    {{ 'GamesPage.Players.NotReady' | translate }}
+                </span>
+            </div>
+        </div>
+    </div>
+</mat-card>

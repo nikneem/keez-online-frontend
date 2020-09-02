@@ -1,0 +1,169 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "systemName": {
+            "type": "String"
+        },
+        "environment": {
+            "type": "String"
+        }
+    },
+    "variables": {
+        "environment": "[parameters('environment')]",
+        "storageAccountName": "[concat(parameters('environment'), parameters('systemName'), 'webappstorage')]",
+        "cdnProfileName": "[concat(parameters('environment'), '-', parameters('systemName'), '-webcdn')]",
+        "cdnEndpointName": "[concat(parameters('environment'), '-', parameters('systemName'), '-webcdn-endpoint')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccountName')]",
+            "apiVersion": "2019-06-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [],
+            "sku": {
+                "name": "Standard_RAGRS"
+            },
+            "kind": "StorageV2",
+            "tags": {
+                "Environment": "[variables('environment')]",
+                "System": "Keez"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(variables('storageAccountName'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+            ],
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                },
+                "deleteRetentionPolicy": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(variables('storageAccountName'), '/default/$web')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storageAccountName'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+            ],
+            "properties": {
+                "publicAccess": "None"
+            }
+        },
+
+        {
+            "type": "Microsoft.Cdn/profiles",
+            "apiVersion": "2020-04-15",
+            "name": "[variables('cdnProfileName')]",
+            "location": "Global",
+            "sku": {
+                "name": "Standard_Microsoft"
+            },
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Cdn/profiles/endpoints",
+            "apiVersion": "2020-04-15",
+            "name": "[concat(variables('cdnProfileName'), '/', variables('cdnEndpointName'))]",
+            "location": "Global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Cdn/profiles', variables('cdnProfileName'))]"
+            ],
+            "properties": {
+                "originHostHeader": "[concat(variables('storageAccountName'), '.z6.web.core.windows.net')]",
+                "isHttpAllowed": true,
+                "isHttpsAllowed": true,
+                "queryStringCachingBehavior": "IgnoreQueryString",
+                "origins": [
+                    {
+                        "name": "[concat(variables('storageAccountName'), '-z6-web-core-windows-net')]",
+                        "properties": {
+                            "hostName": "[concat(variables('storageAccountName'), '.z6.web.core.windows.net')]",
+                            "originHostHeader": "[concat(variables('storageAccountName'), '.z6.web.core.windows.net')]",
+                            "priority": 1,
+                            "weight": 1000,
+                            "enabled": true
+                        }
+                    }
+                ],
+                "originGroups": [],
+                "contentTypesToCompress": [
+                    "application/eot",
+                    "application/font",
+                    "application/font-sfnt",
+                    "application/javascript",
+                    "application/json",
+                    "application/opentype",
+                    "application/otf",
+                    "application/pkcs7-mime",
+                    "application/truetype",
+                    "application/ttf",
+                    "application/vnd.ms-fontobject",
+                    "application/xhtml+xml",
+                    "application/xml",
+                    "application/xml+rss",
+                    "application/x-font-opentype",
+                    "application/x-font-truetype",
+                    "application/x-font-ttf",
+                    "application/x-httpd-cgi",
+                    "application/x-javascript",
+                    "application/x-mpegurl",
+                    "application/x-opentype",
+                    "application/x-otf",
+                    "application/x-perl",
+                    "application/x-ttf",
+                    "font/eot",
+                    "font/ttf",
+                    "font/otf",
+                    "font/opentype",
+                    "image/svg+xml",
+                    "text/css",
+                    "text/csv",
+                    "text/html",
+                    "text/javascript",
+                    "text/js",
+                    "text/plain",
+                    "text/richtext",
+                    "text/tab-separated-values",
+                    "text/xml",
+                    "text/x-script",
+                    "text/x-component",
+                    "text/x-java-source"
+                ],
+                "isCompressionEnabled": true,
+                "optimizationType": "GeneralWebDelivery",
+                "geoFilters": [],
+                "urlSigningKeys": []
+            }
+        },
+        {
+            "type": "Microsoft.Cdn/profiles/endpoints/origins",
+            "apiVersion": "2020-04-15",
+            "name": "[concat(variables('cdnProfileName'), '/', variables('cdnEndpointName'),'/', variables('storageAccountName'),'-z6-web-core-windows-net')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Cdn/profiles/endpoints', variables('cdnProfileName'), variables('cdnEndpointName'))]",
+                "[resourceId('Microsoft.Cdn/profiles', variables('cdnProfileName'))]"
+            ],
+            "properties": {
+                "hostName": "[concat(variables('storageAccountName'),'.z6.web.core.windows.net')]",
+                "enabled": true,
+                "priority": 1,
+                "weight": 1000,
+                "originHostHeader": "[concat(variables('storageAccountName'),'.z6.web.core.windows.net')]"
+            }
+        }
+    ]
+}

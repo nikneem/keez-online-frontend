@@ -1,0 +1,75 @@
+<h1>{{ 'FriendsPage.PendingInvitations.Title' | translate }}</h1>
+<keez-friends-navtabs></keez-friends-navtabs>
+<div
+    class="empty-state"
+    *ngIf="!isLoading && pendingInvitations && pendingInvitations.length === 0"
+>
+    <div class="empty-state-panel">
+        <mat-card>
+            <h1>
+                {{
+                    'FriendsPage.PendingInvitations.EmptyStateTitle' | translate
+                }}
+            </h1>
+            <p>
+                {{
+                    'FriendsPage.PendingInvitations.EmptyStateText' | translate
+                }}
+            </p>
+        </mat-card>
+    </div>
+</div>
+<div class="pending-invitations" *ngIf="pendingInvitations?.length > 0">
+    <mat-table [dataSource]="pendingInvitations" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="flex-5">
+                Name
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="flex-5">
+                {{ element.name }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="expiresOn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="flex-3">
+                Expires
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="flex-3">
+                {{ element.expiresOn | date: 'short' }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="flex-2">
+                Actions
+            </mat-header-cell>
+            <mat-cell
+                *matCellDef="let element"
+                class="flex-2 align-right action-buttons"
+            >
+                <button
+                    mat-flat-button
+                    (click)="acceptInvitation(element)"
+                    color="success"
+                >
+                    {{ 'BUTTON.Accept' | translate }}
+                </button>
+                <button
+                    mat-flat-button
+                    (click)="declineInvitation(element)"
+                    color="warn"
+                >
+                    {{ 'BUTTON.Decline' | translate }}
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</div>
+<keez-page-loading [loading]="isLoading"></keez-page-loading>

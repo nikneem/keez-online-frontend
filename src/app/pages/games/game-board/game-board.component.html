@@ -1,0 +1,38 @@
+<div class="board">
+    <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 1700 1700"
+        *ngIf="boardPositions"
+    >
+        <circle
+            [id]="position.id"
+            [attr.cx]="position.coordX"
+            [attr.cy]="position.coordY"
+            [attr.stroke]="position.borderColor"
+            [attr.fill]="position.fillColor"
+            r="25"
+            stroke-width="3"
+            *ngFor="let position of boardPositions"
+        />
+        <svg
+            viewBox="0 0 64 64"
+            height="80px"
+            width="80px"
+            [attr.x]="100 * pawn.coordX + 10"
+            [attr.y]="100 * pawn.coordY + 10"
+            *ngFor="let pawn of pawns"
+        >
+            <g
+                [id]="pawn.id"
+                [attr.fill]="pawn.color"
+                stroke="#000"
+                stroke-width="2px"
+                (click)="selectPawn(pawn)"
+            >
+                <path d="m 25,27 14,0 12,35 -39,0 Z" />
+                <circle r="16" cy="17" cx="32" />
+            </g>
+        </svg>
+    </svg>
+</div>

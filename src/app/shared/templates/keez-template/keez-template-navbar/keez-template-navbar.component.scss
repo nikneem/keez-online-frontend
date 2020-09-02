@@ -1,0 +1,13 @@
+.user-profile-menu {
+    img {
+        width: 36px;
+        height: 36px;
+        margin-right: 0.5rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .small-only {
+        display: none;
+    }
+}

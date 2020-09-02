@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <button mat-icon-button aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ 'APP.Title' | translate }}</span>
+</mat-toolbar>
+<mat-action-list>
+    <a mat-list-item routerLink="/keez/dashboard" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span>{{ 'MENU.Dashboard' | translate }}</span>
+    </a>
+    <a mat-list-item routerLink="/games" routerLinkActive="active">
+        <mat-icon>games</mat-icon>
+        <span>{{ 'MENU.Games' | translate }}</span>
+    </a>
+    <a mat-list-item routerLink="/friends" routerLinkActive="active">
+        <mat-icon>group</mat-icon>
+        <span>{{ 'MENU.Friends' | translate }}</span>
+    </a>
+    <a mat-list-item routerLink="/rules" routerLinkActive="active">
+        <mat-icon>gavel</mat-icon>
+        <span>{{ 'MENU.Rules' | translate }}</span>
+    </a>
+</mat-action-list>

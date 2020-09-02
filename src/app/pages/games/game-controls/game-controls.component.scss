@@ -1,0 +1,24 @@
+.game-controls-container {
+    display: flex;
+    flex-flow: column;
+    * {
+        margin-bottom: 0.5rem;
+    }
+    .cards-text {
+        dl {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            dt {
+                flex: 1 1 10%;
+                width: 10%;
+            }
+            dd {
+                flex: 9 9 90%;
+                margin-inline-start: 0;
+                opacity: 0.75;
+            }
+        }
+    }
+}

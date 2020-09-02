@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+    <mat-sidenav opened="true" mode="side">
+        <keez-template-menu></keez-template-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content-outer-container">
+            <div class="toolbar-container">
+                <keez-template-navbar></keez-template-navbar>
+            </div>
+            <div class="page-content-container">
+                <div class="page-content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<p-toast></p-toast>

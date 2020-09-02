@@ -1,0 +1,44 @@
+@import '../../../../scss/variables.scss';
+
+.cards {
+    flex: 1 1;
+    display: flex;
+    flex-flow: row;
+    .card {
+        opacity: 0.7;
+        flex: 1 1 20%;
+        display: flex;
+        flex-flow: column;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border: 3px solid transparent;
+        border-radius: 0.5rem;
+
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+
+        img {
+            width: 100%;
+        }
+    }
+    .selected {
+        opacity: 1;
+        border-color: $primary;
+    }
+}
+
+.not-has-turn {
+    .card {
+        opacity: 0.5;
+    }
+}
+
+.has-turn {
+    .card:hover {
+        opacity: 1;
+        cursor: pointer;
+        border-color: #fff;
+    }
+}

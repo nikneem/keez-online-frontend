@@ -1,0 +1,14 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="/friends/list" routerLinkActive="active">
+        {{ 'FriendsPage.YourFriendships' | translate }}
+    </a>
+    <a mat-tab-link routerLink="/friends/invites" routerLinkActive="active">
+        {{ 'FriendsPage.Invitations' | translate }}
+    </a>
+    <span class="fill-remaining-space"></span>
+    <span>
+        <button mat-flat-button color="primary" (click)="inviteFriend()">
+            Invite a friend
+        </button>
+    </span>
+</nav>

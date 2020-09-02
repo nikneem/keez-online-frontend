@@ -1,0 +1,4 @@
+{
+    "editor.formatOnSave": true,
+    "[azure-pipelines].customSchemaFile": "/yamlschema.json"
+}

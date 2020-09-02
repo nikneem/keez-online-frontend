@@ -1,0 +1,10 @@
+<h1>{{ 'GamesPage.Title' | translate }}</h1>
+<div class="split-page-container">
+    <div class="first-container">
+        <keez-game-list></keez-game-list>
+    </div>
+    <div class="second-container">
+        <keez-game-create></keez-game-create>
+    </div>
+</div>
+<keez-page-loading [loading]="isLoading"></keez-page-loading>

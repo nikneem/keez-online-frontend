@@ -1,0 +1,19 @@
+<div class="error-page-container">
+    <div class="background-container">
+        <div class="error-container">
+            <mat-card>
+                <mat-card-title>
+                    {{ 'ERROR.Server-Down-Title' | translate }}
+                </mat-card-title>
+                <mat-card-content>
+                    {{ 'ERROR.Server-Down-Message' | translate }}
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-flat-button color="primary" (click)="goHome()">
+                        {{ 'BUTTON.BackHome' | translate }}
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

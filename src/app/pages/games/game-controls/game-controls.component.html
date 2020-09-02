@@ -1,0 +1,38 @@
+<div class="game-controls-container" *ngIf="gameId">
+    <keez-game-control-cards></keez-game-control-cards>
+    <keez-game-control-turns></keez-game-control-turns>
+    <keez-game-players></keez-game-players>
+    <mat-card>
+        <div class="cards-text">
+            <h3>Card values</h3>
+            <dl>
+                <dt>Ace</dt>
+                <dd>Choose to take one step, or bring a pawn into play</dd>
+                <dt>2</dt>
+                <dd>Take two steps forward</dd>
+                <dt>3</dt>
+                <dd>Take three steps forward</dd>
+                <dt>4</dt>
+                <dd>Take four steps backwards</dd>
+                <dt>5</dt>
+                <dd>Take five steps forward</dd>
+                <dt>6</dt>
+                <dd>Take six steps forward</dd>
+                <dt>7</dt>
+                <dd>Take 7 steps, divided over 1 or maximum 2 pawns</dd>
+                <dt>8</dt>
+                <dd>Take eight steps forward</dd>
+                <dt>9</dt>
+                <dd>Take nine steps forward</dd>
+                <dt>10</dt>
+                <dd>Take ten steps forward</dd>
+                <dt>Jack</dt>
+                <dd>Swap two pawns that are or a different color</dd>
+                <dt>Queen</dt>
+                <dd>Take twelve steps forward</dd>
+                <dt>King</dt>
+                <dd>Bring a pawn into play</dd>
+            </dl>
+        </div>
+    </mat-card>
+</div>

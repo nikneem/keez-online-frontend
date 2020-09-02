@@ -1,0 +1,147 @@
+{
+    "APP": {
+        "Title": "Keez Online"
+    },
+    "BUTTON": {
+        "OK": "OK",
+        "Cancel": "Cancel",
+        "Login": "Login",
+        "Logout": "Logout",
+        "BackHome": "Back to home",
+        "Accept": "Accept",
+        "Decline": "Decline",
+        "Profile": "User profile",
+        "CreateGame": "Create game and invite players",
+        "BringIntoPlay": "Bring into play",
+        "AdvancePawn": "Advance a pawn",
+        "Yes": "Yes",
+        "No": "No"
+    },
+    "MENU": {
+        "Dashboard": "Dashboard",
+        "Games": "Games",
+        "Friends": "Friends",
+        "Rules": "Game rules"
+    },
+    "ERROR": {
+        "Server-Down-Title": "Oops!",
+        "Server-Down-Message": "The Keez Online Server does not respond. You don't have to take any action. We're monitoring our systems, we're on it."
+    },
+    "NEW-USER": {
+        "Title": "Welcome {{name}}",
+        "ProfileIntro": "This is your player profile. You can change user user profile by clicking your name in the upper right corner at any time",
+        "Name": "Display name",
+        "FriendshipId": "Friendship ID (read-only)",
+        "Email": "Email address"
+    },
+    "INVITE-FRIEND": {
+        "Title": "Invite a new friend",
+        "Text": "You can invite a new friend by entering their friendship ID",
+        "FriendshipId": "Friendship ID"
+    },
+    "WelcomePage": {
+        "GameIntro": "Keez Online is a parcheesi-like game player with four players in teams of two. Players use playing cards in stead of dice."
+    },
+    "DashboardPage": {
+        "Title": "Dashboard",
+        "TotalWins": "Total wins",
+        "TotalLosses": "Total losses",
+        "WinLoseRatio": "Win / Lose Ratio"
+    },
+    "GamesPage": {
+        "Title": "Your current active games",
+        "GamesList": {
+            "EmptyStateTitle": "No games available",
+            "EmptyStateText": "You are currently not a player of an active game. In case you have 3 friends or more, you can start a new game yourself"
+        },
+        "Create": {
+            "Title": "Create new game",
+            "Text": "Keez is a combined board/card game played with two teams of two players each. To create a new game, select three friends.",
+            "GameName": "Game name",
+            "PlayerOne": "Player #1",
+            "PlayerTwo": "Player #2",
+            "PlayerThree": "Player #3",
+            "PlayerFour": "Player #4",
+            "RandomizePlayers": "Randomly put players in teams"
+        },
+        "Friendships": {
+            "EmptyStateTitle": "Create new game",
+            "EmptyStateText": "You cannot create a new game, you need at least 3 friends to play with. Go to the friends page and invite them!"
+        },
+        "Players": {
+            "Ready": "Ready",
+            "NotReady": "Not Ready",
+            "SetReady": "Set Ready",
+            "HasTurn": "Has turn",
+            "NotHasTurn": "Waiting"
+        },
+        "Cards": {
+            "ValueDescription1": "You may choose to either bring a pawn into play, or advance a pawn with a single step",
+            "ValueDescription2": "Advance a pawn with two steps",
+            "ValueDescription3": "Advance a pawn with three steps",
+            "ValueDescription4": "Pawn moves four steps backwards",
+            "ValueDescription5": "Advance a pawn with five steps",
+            "ValueDescription6": "Advance a pawn with six steps",
+            "ValueDescription7": "Advance a maximum of two pawns with a total of seven steps.",
+            "ValueDescription8": "Advance a pawn with eight steps",
+            "ValueDescription9": "Advance a pawn with nine steps",
+            "ValueDescription10": "Advance a pawn with ten steps",
+            "ValueDescription11": "Select two pawns to swap positions",
+            "ValueDescription12": "Advance a pawn with twelve steps",
+            "ValueDescription13": "Bring a pawn into play"
+        },
+        "Turns": {
+            "SelectCardFirst": "Please select a card before you select a pawn",
+
+            "ActionSelectFirstCard": "It's your turn, select the card you want to play",
+            "ActionSelectFirstPawn": "Good, now select a pawn",
+            "ActionSelectSecondPawn": "Excellent, now select a second pawn",
+            "ActionSelectSteps": "You may device a total amount of seven steps, over two pawns. Select the amount of steps you like to take with the first pawn",
+            "ActionSelectSendAction": "You're all set, click GO to make the move",
+
+            "RequestWalkOrBringIntoPlayTitle": "Big decision coming up",
+            "RequestWalkOrBringIntoPlayText": "You've played an Ace. With an Ace you may choose to bring a pawn into play, or advance a pawn of choise. What would you like to do?",
+            "RequestNumberOfPawnStepsTitle": "Select number of steps",
+            "RequestNumberOfPawnStepsText": "The card you selected, allows you to divide the number of steps over a maximum of two pawns. You may however choose to walk all steps with a single pawn. How many steps do you want to take with the selected pawn?",
+
+            "PassConfirmationTitle": "Want to pass?",
+            "PassConfirmationText": "You can only pass when none of your cards are playable. In case you pass, you will lose all your cards currently at hand, and cannot play until the next round. Do you want to pass?"
+        }
+    },
+    "FriendsPage": {
+        "YourFriendships": "Your friendships",
+        "Invitations": "Invitations",
+        "Friendships": {
+            "Title": "Your friends",
+            "EmptyStateTitle": "You have no friendships",
+            "EmptyStateText": "When you invited a different user to become your friend, this friendship will appear as soon as the other user accepted your invitation."
+        },
+        "PendingInvitations": {
+            "Title": "Friendship invitations",
+            "EmptyStateTitle": "No pending invitations",
+            "EmptyStateText": "You have no pending invitations. Pending invitations are when other users invite you to become their friend. If you sent and invitation to another user, this user will see your invitation."
+        }
+    },
+    "ErrorCode": {
+        "1001": "The user could not be found",
+
+        "1021": "A friendship request is already pending. Please wait for this friend to accept your invitation.",
+        "1022": "You are friends already, there is no need to invite this friend again",
+        "1023": "Friendship invitation could not be sent due to an unknown reason",
+        "1024": "This is your own friendship ID, you cannot invite yourself as a friend"
+    },
+    "Notification": {
+        "NewFriendshipRequest": {
+            "Title": "New friendship request",
+            "Text": "A new friendship request came in from '{{name}}'. Go to the invitations tab on the friends page to review."
+        },
+        "FriendshipAccepted": {
+            "Title": "Friendship accepted",
+            "Text": "'{{name}}' is now your friend"
+        },
+        "FriendshipDenied": {
+            "Title": "Friendship denied",
+            "Text": "A friendship request you sent was denied"
+        }
+    }
+}

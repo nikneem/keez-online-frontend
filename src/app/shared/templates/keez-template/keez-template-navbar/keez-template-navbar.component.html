@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <span class="small-only">{{ 'APP.Title' | translate }}</span>
+    <span class="fill-remaining-space"></span>
+    <button
+        mat-button
+        *ngIf="userProfile"
+        class="user-profile-menu"
+        [matMenuTriggerFor]="userProfileMenu"
+    >
+        <img [src]="userProfile.picture" />
+        <span> {{ userProfile.name }}</span>
+    </button>
+</mat-toolbar>
+<mat-menu #userProfileMenu="matMenu">
+    <button mat-menu-item (click)="showUserRegistration()">
+        {{ 'BUTTON.Profile' | translate }}
+    </button>
+    <button mat-menu-item (click)="logout()">
+        {{ 'BUTTON.Logout' | translate }}
+    </button>
+</mat-menu>

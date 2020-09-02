@@ -1,0 +1,42 @@
+@import '../../../../../scss/variables.scss';
+
+.mat-toolbar {
+    a {
+        display: none;
+    }
+    span {
+        display: none;
+    }
+}
+.mat-action-list {
+    a {
+        span {
+            display: none;
+        }
+    }
+}
+a {
+    text-decoration: none;
+}
+a.active {
+    color: $primary;
+}
+
+@media only screen and (min-width: 1200px) {
+    .mat-toolbar {
+        a {
+            display: inline-block;
+        }
+        span {
+            display: inline-block;
+        }
+    }
+    .mat-action-list {
+        a {
+            span {
+                margin-left: 0.5rem;
+                display: block;
+            }
+        }
+    }
+}
